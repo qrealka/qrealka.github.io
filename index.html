@@ -5,12 +5,12 @@
 <br>
 	
 <div id="by_name">
-    WebSocket( ws://localhost/ )
+    WebSocket( ws://localhost:8080 )
 </div>
 <br>
 	
 <div id="by_ip">
-    WebSocket( ws://127.0.0.1/ )
+    WebSocket( ws://127.0.0.1:8080 )
 </div>
 <br>
 	
@@ -19,7 +19,7 @@
 	{
 		try
 		{
-			var address = element.id == "by_ip" ? "ws://127.0.0.1/" : "ws://localhost/";
+			var address = element.id == "by_ip" ? "ws://127.0.0.1:8080" : "ws://localhost:8080";
 			var socket = new WebSocket(address);
 			socket.onopen = function() {
 				console.log('Connection successfull');
