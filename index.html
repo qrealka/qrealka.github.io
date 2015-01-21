@@ -13,13 +13,18 @@
     WebSocket( ws://127.0.0.1:8080 )
 </div>
 <br>
-	
+
+<div id="by_domain">
+    WebSocket( ws://loginov:8080 )
+</div>
+<br>
+
 <script>
 	function TestConnection(element)
 	{
 		try
 		{
-			var address = element.id == "by_ip" ? "ws://127.0.0.1:8080" : "ws://localhost:8080";
+			var address = element.id == "by_ip" ? "ws://127.0.0.1:8080" : (element.id == "by_name" ? "ws://localhost:8080" : "ws://loginov:8080");
 			var socket = new WebSocket(address);
 			socket.onopen = function() {
 				console.log('Connection successfull');
