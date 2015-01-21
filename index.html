@@ -1,1 +1,60 @@
-Hello World
+<html>
+<body>
+
+<h2>Test case: connect to localhost in browsers:</h2>
+<br>
+	
+<div id="by_name" adr="ws://localhost/">
+    WebSocket( ws://localhost/ )
+</div>
+<br>
+	
+<div id="by_ip" adr="ws://127.0.0.1/">
+    WebSocket( ws://127.0.0.1/ )
+</div>
+<br>
+	
+<script>
+	function TestConnection(element)
+	{
+		try
+		{
+			var address = element.attributes.getNamedItem("adr").value;
+			var socket = new WebSocket(address);
+			socket.onopen = function() {
+				console.log('Connection successfull');
+			};
+			
+			socket.onopen = function() {
+				console.log('Connection close');
+			};
+			
+			sockect.onerror = function(e) {
+				console.log('Connection error: ' + (e.message || e));
+			};
+		}
+		catch(e)
+		{
+			console.log('test error: ' + (e.message || e));
+		}
+	}
+	
+    function AddEventListener(element, name, func) 
+	{
+        if ("addEventListener" in element)
+            element.addEventListener(name, function (e) { func(e || window.event); }, false);
+        else
+            element.attachEvent('on' + name, function (e) { func.call(element, e || window.event); });
+    }
+	
+	function SetEventHandlers(tags)
+	{
+		for (var i = 0; i < tags.length; ++i) {
+			AddEventListener(tags[i], 'click', function() {TestConnection(tags[i]);});
+		}
+	}
+	
+	SetEventHandlers(document.getElementsByTagName('div'));
+</script>
+</body>
+</html>
