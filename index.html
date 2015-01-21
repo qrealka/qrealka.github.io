@@ -51,7 +51,13 @@
 	function SetEventHandlers(tags)
 	{
 		for (var i = 0; i < tags.length; ++i) {
-			AddEventListener(tags[i], 'click', function() {TestConnection(tags[i]);});
+			var callback = (function(){
+				var element = tags[i];
+				return function(){
+					TestConnection(element);
+				};
+			})();
+			AddEventListener(tags[i], 'click', callback);
 		}
 	}
 	
