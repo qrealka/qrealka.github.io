@@ -23,17 +23,16 @@
 			var socket = new WebSocket(address);
 			socket.onopen = function() {
 				console.log('Connection successfull');
+				socket.send(address);
 			};
 			
-			socket.onopen = function() {
+			socket.onclose = function() {
 				console.log('Connection close');
 			};
 			
 			socket.onerror = function(e) {
 				console.log('Connection error: ' + (e.message || e));
 			};
-			
-			socket.send(address);
 		}
 		catch(e)
 		{
