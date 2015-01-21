@@ -29,9 +29,11 @@
 				console.log('Connection close');
 			};
 			
-			sockect.onerror = function(e) {
+			socket.onerror = function(e) {
 				console.log('Connection error: ' + (e.message || e));
 			};
+			
+			socket.send(address);
 		}
 		catch(e)
 		{
