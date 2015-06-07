@@ -67,6 +67,21 @@
 	}
 	
 	SetEventHandlers(document.getElementsByTagName('div'));
+	
+	function GetHTML()
+	{
+		var request = new XMLHttpRequest();
+		request.open("GET", "https://online.sberbank.ru/CSAFront/index.do");
+		request.onerror = function () { console.log("Can't get sberbank page!");}
+		request.onload = function() {
+			console.log( request.responseText);
+		};
+		request.send();
+	}
 </script>
+
+<h2>Test case: send ajax to sberbank online (debug wireshark)</h2>
+<button onclick="GetHTML()">Get sberbank page</button>
+
 </body>
 </html>
